@@ -4,7 +4,7 @@ import numpy as np
 
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
-import torch
+import torch, os
 from tqdm import tqdm
 from torch.nn.functional import avg_pool2d, interpolate
 
@@ -299,6 +299,7 @@ else:
 
     for s in tqdm(range(0, 256)):
         torch.manual_seed(s)
+        os.makedirs('./images/samples', exist_ok=True)
         temperature(0.88, columns=1, save_as='./images/samples/T_%.4i.png' % (s))
         plt.title(str(s))
 
